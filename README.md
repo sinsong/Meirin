@@ -1,6 +1,6 @@
 # Meirin
 
-[**English**](https://github.com/sinsong/Meirin) | [**中文**](blob/master/README_zh.md)
+[**English**](https://github.com/sinsong/Meirin) | [**中文**](README_zh.md)
 
 A attribute-based access control system.
 Project name comes from touhou [红美铃](https://zh.moegirl.org.cn/%E7%BA%A2%E7%BE%8E%E9%93%83).
