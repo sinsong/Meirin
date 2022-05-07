@@ -1,0 +1,18 @@
+# expect: notapplicable
+
+POST http://localhost:8000/v1/enforce
+
+{
+    "subject": {
+        "idontcare": "idontcare"
+    },
+    "object": {
+        "idontcare": "idontcare"
+    },
+    "action": {
+        "idontcare": "idontcare"
+    },
+    "environment": {
+        "time": "hehe"
+    }
+}

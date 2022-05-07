@@ -1,0 +1,60 @@
+// Meirin Policy DSL
+// top rule: `expr`
+//
+
+?expr: or_expr
+
+// expression
+
+?or_expr: and_expr
+    | or_expr "||" or_expr
+
+?and_expr: equ_expr
+    | and_expr "&&" equ_expr
+
+?equ_expr: rela_expr
+    | equ_expr "==" rela_expr -> equ_expr
+    | equ_expr "!=" rela_expr -> neq_expr
+
+?rela_expr: unary_expr
+    | rela_expr "<"  unary_expr -> rela_lt_expr
+    | rela_expr ">"  unary_expr -> rela_gt_expr
+    | rela_expr "<=" unary_expr -> rela_lte_expr
+    | rela_expr ">=" unary_expr -> rela_gte_expr
+
+?unary_expr: postfix_expr
+    | "!" postfix_expr -> neg_expr
+
+?postfix_expr: primary_expr
+    | postfix_expr "." identifier         -> getmem_expr
+    | postfix_expr "(" arg_expr_list ")"  -> call_expr
+
+?arg_expr_list: expr ("," expr)*
+
+// primary expression
+
+?primary_expr: identifier
+    |constant
+    | string_literal
+    | "(" expr ")"
+
+// Token
+
+constant: SIGNED_NUMBER -> number_constant
+    | "true"            -> true_constant
+    | "false"           -> false_constant
+
+identifier: CNAME
+string_literal: ESCAPED_STRING
+
+// external
+
+%import common.ESCAPED_STRING
+%import common.SIGNED_NUMBER
+%import common.CNAME
+%import common.NUMBER
+%import common.WS
+
+// lark grammar config
+
+%ignore WS

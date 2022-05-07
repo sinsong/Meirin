@@ -1,0 +1,9 @@
+POST http://localhost:8000/v1/policy/
+X-Meirin-Credential: test-key
+
+{
+    "name": "",
+    "group": ,
+    "match": "",
+    "effect": ""
+}

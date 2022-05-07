@@ -1,0 +1,19 @@
+# expect: permit
+
+POST http://localhost:8000/v1/enforce
+
+{
+    "subject": {
+        "role": "robot"
+    },
+    "object": {
+        "domain": "mao",
+        "type": "robotapi"
+    },
+    "action": {
+        "name": "read"
+    },
+    "environment": {
+        
+    }
+}
